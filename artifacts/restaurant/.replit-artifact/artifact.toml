@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "ตามสั่งซอยเขื่อน"
+version = "1.0.0"
+id = "artifacts/restaurant"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18641
+
+[services.development]
+run = "pnpm --filter @workspace/restaurant run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/restaurant", "run", "build" ]
+publicDir = "artifacts/restaurant/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18641"
+BASE_PATH = "/"
