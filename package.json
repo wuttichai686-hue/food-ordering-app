@@ -1,11 +1,22 @@
-"dependencies": {
-  "pg": "^8.12.0",
-  "zod": "^3.23.8",
-  "@tanstack/react-query": "^5.0.0",
-  "drizzle-orm": "^0.30.0"
-},
-"devDependencies": {
-  "@types/node": "^20.0.0",
-  "prettier": "^3.8.4",
-  "typescript": "~5.9.3"
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+  },
+  "dependencies": {
+    "pg": "^8.12.0",
+    "zod": "^3.23.8",
+    "@tanstack/react-query": "^5.0.0",
+    "drizzle-orm": "^0.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "prettier": "^3.8.4",
+    "typescript": "~5.9.3"
+  }
 }
